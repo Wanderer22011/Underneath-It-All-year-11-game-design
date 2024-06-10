@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Underneath It All, year 11 game design"
+run/main_scene="res://scences/level_1.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Pictures/icon.svg"
 
 [rendering]
 
