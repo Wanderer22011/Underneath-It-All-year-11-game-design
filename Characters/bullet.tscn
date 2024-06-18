@@ -4,16 +4,24 @@
 [ext_resource type="Script" path="res://Characters/bullet.gd" id="1_srmme"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4j117"]
-size = Vector2(401.569, 614.4)
+size = Vector2(491.921, 870.402)
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.0996094, 0.0195312)
 script = ExtResource("1_srmme")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.78707e-06, 0)
+position = Vector2(-5.01961, 25.6001)
 shape = SubResource("RectangleShape2D_4j117")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3.11765, 4.8)
+position = Vector2(0, -3.05176e-05)
+scale = Vector2(3.89951, 7.50002)
 texture = ExtResource("1_hcyfj")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-5.01962, 0)
+scale = Vector2(18.5725, 46.0801)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

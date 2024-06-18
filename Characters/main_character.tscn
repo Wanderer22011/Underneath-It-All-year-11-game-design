@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bha3ww3pdj7pv" path="res://Pictures/icon.svg" id="1_axwlm"]
 [ext_resource type="Script" path="res://Scripts/main_character.gd" id="1_u1mcy"]
-[ext_resource type="Script" path="res://Characters/Area2D.gd" id="3_ph0ip"]
+[ext_resource type="Script" path="res://Characters/Gun.gd" id="3_1yhi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gy0rc"]
 size = Vector2(50, 62)
@@ -10,20 +10,20 @@ size = Vector2(50, 62)
 [node name="Main Character" type="CharacterBody2D"]
 script = ExtResource("1_u1mcy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0.5)
-scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_gy0rc")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.5, 0.75)
+[node name="Character" type="Sprite2D" parent="."]
 scale = Vector2(0.195312, 0.246094)
 texture = ExtResource("1_axwlm")
 
-[node name="Gun" type="Area2D" parent="."]
-script = ExtResource("3_ph0ip")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_gy0rc")
 
-[node name="Sprite2D" type="Sprite2D" parent="Gun"]
-position = Vector2(15, 0)
-scale = Vector2(0.240234, 0.0546875)
+[node name="Gun" type="Sprite2D" parent="."]
+position = Vector2(6.57813, 0.1875)
+scale = Vector2(0.287842, 0.0595703)
 texture = ExtResource("1_axwlm")
+script = ExtResource("3_1yhi4")
+
+[node name="Marker2D" type="Marker2D" parent="Gun"]
+position = Vector2(-64.4194, 0)
+scale = Vector2(2.7387, 16.8031)

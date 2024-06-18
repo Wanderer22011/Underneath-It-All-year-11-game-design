@@ -5,6 +5,7 @@ onready var gun_point = $Gun
 # Speed of rotation
 var rotation_speed = 20.0
 
+
 func _process(delta):
 	var mouse_position = get_global_mouse_position()
 	var direction = (mouse_position - global_position).normalized()
