@@ -1,6 +1,6 @@
 extends Area2D
  
-export var speed = 2000
+var speed = 1000
 
 func _ready():
 	set_as_top_level(true)
@@ -8,8 +8,8 @@ func _ready():
 func _process(delta):
 	position += (Vector2.RIGHT*speed).rotated(rotation)* delta
 	
-func _physics_process(delta):
-	yield(get_tree().create_timer(0.01), "timeout")
+func _physics_process(_delta):
+	get_tree().create_timer(1)
 	set_physics_process(false)
 	
 
@@ -21,5 +21,5 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 
 
-func _on_body_entered(body):
-	queue_free()
+#func _on_body_entered(_body):
+	#queue_free()
