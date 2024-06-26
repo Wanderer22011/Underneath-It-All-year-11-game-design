@@ -25,5 +25,9 @@ texture = ExtResource("1_axwlm")
 script = ExtResource("3_1yhi4")
 
 [node name="Marker2D" type="Marker2D" parent="Gun"]
-position = Vector2(-64.4194, 0)
+position = Vector2(22.3104, -3.14754)
 scale = Vector2(2.7387, 16.8031)
+
+[node name="BulletCooldownTimer" type="Timer" parent="Gun"]
+
+[connection signal="timeout" from="Gun/BulletCooldownTimer" to="Gun" method="_on_bullet_cooldown_timer_timeout"]
