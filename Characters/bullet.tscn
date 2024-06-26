@@ -5,7 +5,7 @@
 [ext_resource type="Shader" path="res://Characters/bullet.gdshader" id="3_seld4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4j117"]
-size = Vector2(491.921, 870.402)
+size = Vector2(120.471, 512.001)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jpxw1"]
 shader = ExtResource("3_seld4")
@@ -15,17 +15,17 @@ scale = Vector2(0.0996094, 0.0195312)
 script = ExtResource("1_srmme")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.01961, 25.6001)
+position = Vector2(1.19677e-06, 0)
 shape = SubResource("RectangleShape2D_4j117")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 material = SubResource("ShaderMaterial_jpxw1")
-position = Vector2(-5.01962, 0)
-scale = Vector2(18.5725, 46.0801)
+position = Vector2(-1.90735e-06, 1.52588e-05)
+scale = Vector2(6.02353, 25.6001)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -3.05176e-05)
-scale = Vector2(3.89951, 7.50002)
+position = Vector2(-1.90735e-06, -3.05176e-05)
+scale = Vector2(0.935662, 4.27501)
 texture = ExtResource("1_hcyfj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

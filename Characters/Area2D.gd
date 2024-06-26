@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var bullet_scence = preload("res://Characters/bullet.tscn")
-onready var gun_point = $Gun
+@onready var bullet_scence = preload("res://Characters/bullet.tscn")
+@onready var gun_point = $Gun
 # Speed of rotation
 var rotation_speed = 20.0
 

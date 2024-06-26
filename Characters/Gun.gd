@@ -4,6 +4,7 @@ var can_fire = true
 @onready var bullet = preload("res://Characters/bullet.tscn")
 
 var rotation_speed = 100.0
+(float, 0,5) var bulletCooldown : float
 
 
 func _process(delta):
@@ -13,14 +14,16 @@ func _process(delta):
 	
 	# Interpolate the rotation smoothly
 	rotation = lerp_angle(rotation, target_angle, rotation_speed * delta)
-	if Input.is_action_pressed("Shoot") and can_fire:
-		var bullet_instance = bullet.instantiate()
-		bullet_instance.rotation = rotation
-		bullet_instance.global_position = $Marker2D.global_position
-		get_parent().add_child(bullet_instance)
-		can_fire= false
-		get_tree().create_timer(1)
-		can_fire= true
+	if Input.is_action_pressed("Shoot"):
+		if can_fire:
+			
+			var bullet_instance = bullet.instantiate()
+			bullet_instance.rotation = rotation
+			bullet_instance.global_position = $Marker2D.global_position
+			get_parent().add_child(bullet_instance)
+			can_fire= false
+			get_tree().create_timer(0.5)
+			can_fire= true
 		
 
 	
