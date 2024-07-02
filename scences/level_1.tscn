@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://v2s8xp7gpbtu"]
+[gd_scene load_steps=8 format=3 uid="uid://v2s8xp7gpbtu"]
 
-[ext_resource type="Script" path="res://scences/level_1.gd" id="1_81gu2"]
+[ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_81gu2"]
 [ext_resource type="Texture2D" uid="uid://bha3ww3pdj7pv" path="res://Pictures/icon.svg" id="1_e8r6u"]
 [ext_resource type="PackedScene" uid="uid://c351amaf2wxv5" path="res://Characters/main_character.tscn" id="1_pgxqa"]
+[ext_resource type="Script" path="res://Scripts/Exit.gd" id="4_ejy5e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3qn1h"]
 texture = ExtResource("1_e8r6u")
@@ -214,11 +215,14 @@ texture = ExtResource("1_e8r6u")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_3qn1h")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_006vy"]
+size = Vector2(37, 85)
+
 [node name="Level 1" type="Node2D"]
 script = ExtResource("1_81gu2")
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(0, 5)
+position = Vector2(2, 1)
 tile_set = SubResource("TileSet_sf1m0")
 format = 2
 layer_0/name = "ground"
@@ -230,3 +234,19 @@ metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Main Character"]
 zoom = Vector2(3, 3)
+
+[node name="Exit" type="Area2D" parent="."]
+position = Vector2(150, 248)
+script = ExtResource("4_ejy5e")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Exit"]
+position = Vector2(1.90735e-06, 5.72205e-06)
+scale = Vector2(0.28125, 0.671875)
+texture = ExtResource("1_e8r6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_006vy")
+
+[connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
