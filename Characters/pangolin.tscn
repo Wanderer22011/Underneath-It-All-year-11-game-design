@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bv164hjetogv5"]
+
+[node name="Pangolin" type="Node2D"]
+scale = Vector2(0.2, 0.2)
+metadata/_edit_group_ = true

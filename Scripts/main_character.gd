@@ -9,7 +9,7 @@ var jump_Available: bool = true
 @export var jump_Buffer_time: float = 0.3
 var jump_time = 0
 var jump_duration=0.3
-
+var starting_position= Vector2(-147, 274)
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -59,3 +59,6 @@ func Jump()-> void:
 
 func on_jump_buffer_timeout()->void:
 	jump_Buffer= false
+	
+func respawn():
+	position=starting_position
