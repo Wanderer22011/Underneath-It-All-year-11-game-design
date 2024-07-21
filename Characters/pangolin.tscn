@@ -1,5 +1,8 @@
-[gd_scene format=3 uid="uid://bv164hjetogv5"]
+[gd_scene load_steps=2 format=3 uid="uid://bv164hjetogv5"]
+
+[ext_resource type="Script" path="res://Characters/pangolin.gd" id="1_e5f51"]
 
 [node name="Pangolin" type="Node2D"]
 scale = Vector2(0.2, 0.2)
+script = ExtResource("1_e5f51")
 metadata/_edit_group_ = true
