@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpcrksunif1hl"]
+
+[ext_resource type="Texture2D" uid="uid://bha3ww3pdj7pv" path="res://Pictures/icon.svg" id="1_aqt1c"]
+[ext_resource type="Script" path="res://Scripts/enermy_from_spawner.gd" id="1_m2xcv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y61p1"]
+size = Vector2(58, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ietfr"]
+size = Vector2(805, 186)
+
+[node name="EnermyFromSpawner" type="CharacterBody2D"]
+script = ExtResource("1_m2xcv")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_aqt1c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y61p1")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_ietfr")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

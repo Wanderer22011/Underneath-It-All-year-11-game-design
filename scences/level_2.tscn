@@ -9,3 +9,4 @@ offset_right = 582.0
 offset_bottom = 329.0
 scale = Vector2(2, 2)
 text = "You Win! For Now.... New Levels Comming Soon!"
+editable = false
