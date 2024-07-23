@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://v2s8xp7gpbtu"]
+[gd_scene load_steps=15 format=3 uid="uid://v2s8xp7gpbtu"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_81gu2"]
 [ext_resource type="Texture2D" uid="uid://bha3ww3pdj7pv" path="res://Pictures/icon.svg" id="1_e8r6u"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bv164hjetogv5" path="res://Characters/pangolin.tscn" id="5_mq2ir"]
 [ext_resource type="PackedScene" uid="uid://1l07trfq7ls4" path="res://Characters/pangolin_area_2d.tscn" id="6_jonte"]
 [ext_resource type="PackedScene" uid="uid://cpcrksunif1hl" path="res://Characters/enermy_from_spawner.tscn" id="8_bf28y"]
+[ext_resource type="PackedScene" uid="uid://c2h81m8prtlea" path="res://Characters/spawner.tscn" id="9_21c35"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3qn1h"]
 texture = ExtResource("1_e8r6u")
@@ -247,6 +248,7 @@ layer_0/tile_data = PackedInt32Array(1245203, 196608, 2, 1245204, 196608, 2, 124
 script = ExtResource("3_q6bxk")
 
 [node name="Main_Character" parent="." instance=ExtResource("1_pgxqa")]
+light_mask = 3
 position = Vector2(-147, 274)
 metadata/_edit_group_ = true
 
@@ -303,7 +305,12 @@ offset_bottom = 187.0
 text = "Press A and D to move, W or Space to jump. Toggle your mouse to aim and left click to shoot!"
 editable = false
 
-[node name="EnermyFromSpawner" parent="." instance=ExtResource("8_bf28y")]
-position = Vector2(2192, 22)
+[node name="EnemyFromSpawner" parent="." instance=ExtResource("8_bf28y")]
+position = Vector2(2204, 35)
+collision_layer = 2
+collision_mask = 2
+
+[node name="Spawner" parent="." instance=ExtResource("9_21c35")]
+position = Vector2(2572, 45)
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
