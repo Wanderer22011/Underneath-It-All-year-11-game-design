@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://v2s8xp7gpbtu"]
+[gd_scene load_steps=19 format=3 uid="uid://v2s8xp7gpbtu"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_81gu2"]
 [ext_resource type="Texture2D" uid="uid://bha3ww3pdj7pv" path="res://Pictures/icon.svg" id="1_e8r6u"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/Exit.gd" id="4_ejy5e"]
 [ext_resource type="PackedScene" uid="uid://bv164hjetogv5" path="res://Characters/pangolin.tscn" id="5_mq2ir"]
 [ext_resource type="PackedScene" uid="uid://1l07trfq7ls4" path="res://Characters/pangolin_area_2d.tscn" id="6_jonte"]
-[ext_resource type="PackedScene" uid="uid://cpcrksunif1hl" path="res://Characters/enermy_from_spawner.tscn" id="8_bf28y"]
 [ext_resource type="PackedScene" uid="uid://c2h81m8prtlea" path="res://Characters/spawner.tscn" id="9_21c35"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3qn1h"]
@@ -235,6 +234,36 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="Curve2D" id="Curve2D_yxk6e"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -0.000244141, 0, 0, 0, 0, 0, -0.000244141, 0, 0, 0, 0, 0, 3.3335, 0, 0, 0, 0, 0, 0, -3.33334, 0, 0, 0, 0, 0, -6.66667, 0, 0, 0, 0, 3.33301, 0, 0, 0, 0, 0, -2550, -3.33333, 0, 0, 0, 0, 0, 3.33333)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_ysvqh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -0.000244141, 0, 0, 0, 0, 0, -0.000244141, 0, 0, 0, 0, 0, 2556.67, 6.66666, 0, 0, 0, 0, 3.3335, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_fdifg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -0.000244141, 0, 0, 0, 0, 0, 3.3335, 0, 0, 0, 0, 0, 1310, 10, 0, 0, 0, 0, -1243.33, 13.3333, 0, 0, 0, 0, 3.3335, 3.33334)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_vf2tf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3.3335, 0, 0, 0, 0, 0, 1960, 6.66666, 0, 0, 0, 0, -606.667, 0, 0, 0, 0, 0, 3.33252, 3.33333)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_04l0m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3.3335, 0, 0, 0, 0, 0, 650, 6.66667, 0, 0, 0, 0, -1906.67, 3.33333, 0, 0, 0, 0, 3.3335, 3.33333)
+}
+point_count = 4
+
 [node name="Level 1" type="Node2D"]
 script = ExtResource("1_81gu2")
 
@@ -297,6 +326,37 @@ rotates = false
 
 [node name="Pangolin Area2D" parent="Pangolin2/Path2D/PathFollow2D" instance=ExtResource("6_jonte")]
 
+[node name="Pangolin3" parent="." instance=ExtResource("5_mq2ir")]
+position = Vector2(2569, 46)
+scale = Vector2(0.3, 0.3)
+
+[node name="Path2D" type="Path2D" parent="Pangolin3"]
+curve = SubResource("Curve2D_yxk6e")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Pangolin3/Path2D"]
+position = Vector2(-0.208603, 0)
+rotation = 0.00638289
+rotates = false
+
+[node name="Pangolin Area2D" parent="Pangolin3/Path2D/PathFollow2D" instance=ExtResource("6_jonte")]
+
+[node name="Pangolin4" parent="." instance=ExtResource("5_mq2ir")]
+position = Vector2(1803, 45)
+scale = Vector2(0.3, 0.3)
+
+[node name="Path2D" type="Path2D" parent="Pangolin4"]
+curve = SubResource("Curve2D_ysvqh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Pangolin4/Path2D"]
+position = Vector2(-0.11606, -0.000301996)
+rotation = 0.00638289
+rotates = false
+
+[node name="Pangolin Area2D" parent="Pangolin4/Path2D/PathFollow2D" instance=ExtResource("6_jonte")]
+
+[node name="Spawner" parent="." instance=ExtResource("9_21c35")]
+position = Vector2(2572, 45)
+
 [node name="TextEdit" type="TextEdit" parent="."]
 offset_left = -82.0
 offset_top = 148.0
@@ -305,12 +365,46 @@ offset_bottom = 187.0
 text = "Press A and D to move, W or Space to jump. Toggle your mouse to aim and left click to shoot!"
 editable = false
 
-[node name="EnemyFromSpawner" parent="." instance=ExtResource("8_bf28y")]
-position = Vector2(2204, 35)
-collision_layer = 2
-collision_mask = 2
+[node name="Pangolin5" parent="." instance=ExtResource("5_mq2ir")]
+position = Vector2(2176, 44)
+scale = Vector2(0.3, 0.3)
 
-[node name="Spawner" parent="." instance=ExtResource("9_21c35")]
-position = Vector2(2572, 45)
+[node name="Path2D" type="Path2D" parent="Pangolin5"]
+curve = SubResource("Curve2D_fdifg")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Pangolin5/Path2D"]
+position = Vector2(-0.000244141, 0)
+rotation = 0.00638289
+rotates = false
+
+[node name="Pangolin Area2D" parent="Pangolin5/Path2D/PathFollow2D" instance=ExtResource("6_jonte")]
+
+[node name="Pangolin6" parent="." instance=ExtResource("5_mq2ir")]
+position = Vector2(1983, 45)
+scale = Vector2(0.3, 0.3)
+
+[node name="Path2D" type="Path2D" parent="Pangolin6"]
+curve = SubResource("Curve2D_vf2tf")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Pangolin6/Path2D"]
+position = Vector2(3.3335, 0)
+rotation = 0.00638289
+rotates = false
+
+[node name="Pangolin Area2D" parent="Pangolin6/Path2D/PathFollow2D" instance=ExtResource("6_jonte")]
+
+[node name="Pangolin7" parent="." instance=ExtResource("5_mq2ir")]
+position = Vector2(2375, 46)
+scale = Vector2(0.3, 0.3)
+
+[node name="Path2D" type="Path2D" parent="Pangolin7"]
+curve = SubResource("Curve2D_04l0m")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Pangolin7/Path2D"]
+position = Vector2(3.3335, 0)
+rotation = 0.00638289
+rotates = false
+
+[node name="Pangolin Area2D" parent="Pangolin7/Path2D/PathFollow2D" instance=ExtResource("6_jonte")]
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]

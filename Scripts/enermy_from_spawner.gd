@@ -25,3 +25,7 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 	if body.name == "Main_Character":
 		player = null
 		player_chase = false
+		
+
+
+

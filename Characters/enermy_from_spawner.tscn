@@ -7,7 +7,7 @@
 size = Vector2(113.333, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ietfr"]
-size = Vector2(805, 176)
+size = Vector2(805, 312)
 
 [node name="EnermyFromSpawner" type="CharacterBody2D"]
 platform_wall_layers = 1
@@ -28,7 +28,7 @@ shape = SubResource("RectangleShape2D_y61p1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(0, -69)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ietfr")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
