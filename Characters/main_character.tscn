@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c351amaf2wxv5"]
+[gd_scene load_steps=6 format=3 uid="uid://c351amaf2wxv5"]
 
 [ext_resource type="Texture2D" uid="uid://bha3ww3pdj7pv" path="res://Pictures/icon.svg" id="1_axwlm"]
 [ext_resource type="Script" path="res://Scripts/main_character.gd" id="1_u1mcy"]
+[ext_resource type="Texture2D" uid="uid://bdqbis1sbaucl" path="res://Pictures/Main_Character.png" id="2_pdujc"]
 [ext_resource type="Script" path="res://Scripts/Gun.gd" id="3_1yhi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gy0rc"]
@@ -11,8 +12,9 @@ size = Vector2(50, 62)
 script = ExtResource("1_u1mcy")
 
 [node name="Character" type="Sprite2D" parent="."]
-scale = Vector2(0.195312, 0.246094)
-texture = ExtResource("1_axwlm")
+position = Vector2(-2, -0.500002)
+scale = Vector2(1.125, 1.03125)
+texture = ExtResource("2_pdujc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3
@@ -30,5 +32,6 @@ position = Vector2(22.3104, -3.14754)
 scale = Vector2(2.7387, 16.8031)
 
 [node name="BulletCooldownTimer" type="Timer" parent="Gun"]
+autostart = true
 
 [connection signal="timeout" from="Gun/BulletCooldownTimer" to="Gun" method="_on_bullet_cooldown_timer_timeout"]

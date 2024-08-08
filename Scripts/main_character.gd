@@ -14,6 +14,8 @@ var starting_position= Vector2(-147, 274)
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
+func _ready():
+	Global.playerBody = self
 
 enum State{Idle, Run, Jump, Shoot }
 

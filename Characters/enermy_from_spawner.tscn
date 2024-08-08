@@ -1,35 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpcrksunif1hl"]
+[gd_scene load_steps=4 format=3 uid="uid://cpcrksunif1hl"]
 
 [ext_resource type="Texture2D" uid="uid://bha3ww3pdj7pv" path="res://Pictures/icon.svg" id="1_aqt1c"]
 [ext_resource type="Script" path="res://Scripts/enermy_from_spawner.gd" id="1_m2xcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y61p1"]
-size = Vector2(113.333, 120)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ietfr"]
-size = Vector2(805, 312)
+size = Vector2(135.833, 136.667)
 
 [node name="EnermyFromSpawner" type="CharacterBody2D"]
-platform_wall_layers = 1
 script = ExtResource("1_m2xcv")
 metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.625, -0.5)
+scale = Vector2(0.3, 0.3)
+shape = SubResource("RectangleShape2D_y61p1")
+
+[node name="Enemy movement timer" type="Timer" parent="."]
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.250001, -0.25)
+scale = Vector2(0.3, 0.3)
+shape = SubResource("RectangleShape2D_y61p1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_aqt1c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.8147e-07, 0)
-scale = Vector2(0.3, 0.3)
-shape = SubResource("RectangleShape2D_y61p1")
-
-[node name="DetectionArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_ietfr")
-
-[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Enemy movement timer" to="." method="_on_enemy_movement_timer_timeout"]

@@ -1,31 +1,47 @@
 extends CharacterBody2D
 
-@export var speed = 50
-var player_chase = false
-var player = null
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+const speed = 60
+var dir: Vector2
+var is_enemy_chase: bool
+var player = CharacterBody2D
 
+func _ready():
+	is_enemy_chase = true
+	
+func _process(delta):
+	move(delta)
 
-		
-func _physics_process(delta):
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	if player_chase:
-		position.x += (player.position.x - position.x) / speed
-		
-		
-		
-func _on_detection_area_body_entered(body: Node2D) -> void:
-	if body.name == "Main_Character":
-		player = body
-		player_chase = true
+func move(delta):
+	if is_enemy_chase:
+		player = Global.playerBody
+		velocity = position.direction_to(player.position) * speed
+		dir.x = abs(velocity.x) / velocity.x
 
-
-func _on_detection_area_body_exited(body: Node2D) -> void:
-	if body.name == "Main_Character":
-		player = null
-		player_chase = false
-		
+	move_and_slide()
+	
+func _on_enemy_movement_timer_timeout():
+	$"Enemy movement timer".wait_time = choose([0.5, 0.8, 1.0])
+	if !is_enemy_chase:
+		dir = choose([Vector2. RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN])
 
 
 
+	
+func choose(array):
+	array.shuffle()
+	return array.front()
+
+
+
+	
+
+
+
+func _on_area_2d_body_entered(body:Node2D)-> void:
+	if body.name =="Main_Character":
+		body.respawn()
+
+
+func _on_area_2d_area_entered(area):
+	if area is bullet:
+		queue_free()
