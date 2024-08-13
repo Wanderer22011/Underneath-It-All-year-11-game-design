@@ -40,6 +40,8 @@ func choose(array):
 func _on_area_2d_body_entered(body:Node2D)-> void:
 	if body.name =="Main_Character":
 		body.respawn()
+	elif body.name =="Gun":
+		body.respawn()
 
 
 func _on_area_2d_area_entered(area):

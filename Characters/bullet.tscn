@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bfyxv2kng8gyy"]
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_04f22"]
-[ext_resource type="Texture2D" uid="uid://bha3ww3pdj7pv" path="res://Pictures/icon.svg" id="1_hcyfj"]
+[ext_resource type="Texture2D" uid="uid://dgxfbtq12ab8w" path="res://Pictures/Bullets.png" id="2_b2bdl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4j117"]
 size = Vector2(120.471, 512.001)
@@ -40,9 +40,9 @@ position = Vector2(-1.90735e-06, 1.52588e-05)
 scale = Vector2(6.02353, 25.6001)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.90735e-06, -3.05176e-05)
-scale = Vector2(0.935662, 4.27501)
-texture = ExtResource("1_hcyfj")
+position = Vector2(2.27374e-13, 3.8147e-06)
+scale = Vector2(1.88235, 8.80002)
+texture = ExtResource("2_b2bdl")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
