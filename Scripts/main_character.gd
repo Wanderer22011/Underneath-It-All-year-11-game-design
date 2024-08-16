@@ -10,6 +10,9 @@ var jump_Available: bool = true
 var jump_time = 0
 var jump_duration=0.3
 var starting_position= Vector2(-147, 274)
+var health = 100
+var health_max = 100
+var health_min = 0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 

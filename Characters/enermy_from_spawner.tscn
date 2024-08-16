@@ -1,10 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpcrksunif1hl"]
+[gd_scene load_steps=9 format=3 uid="uid://cpcrksunif1hl"]
 
-[ext_resource type="Texture2D" uid="uid://bha3ww3pdj7pv" path="res://Pictures/icon.svg" id="1_aqt1c"]
 [ext_resource type="Script" path="res://Scripts/enermy_from_spawner.gd" id="1_m2xcv"]
+[ext_resource type="Texture2D" uid="uid://cbsmgv65fgxpf" path="res://Pictures/Evil Spirit.png" id="2_1j481"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y61p1"]
-size = Vector2(135.833, 136.667)
+size = Vector2(113.75, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md1sp"]
+atlas = ExtResource("2_1j481")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlohi"]
+atlas = ExtResource("2_1j481")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7odur"]
+atlas = ExtResource("2_1j481")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja1g5"]
+atlas = ExtResource("2_1j481")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v18qt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md1sp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlohi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7odur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ja1g5")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="EnermyFromSpawner" type="CharacterBody2D"]
 script = ExtResource("1_m2xcv")
@@ -13,21 +54,20 @@ metadata/_edit_group_ = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.625, -0.5)
+position = Vector2(0.0625005, 0.5)
 scale = Vector2(0.3, 0.3)
 shape = SubResource("RectangleShape2D_y61p1")
 
 [node name="Enemy movement timer" type="Timer" parent="."]
 autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.250001, -0.25)
-scale = Vector2(0.3, 0.3)
-shape = SubResource("RectangleShape2D_y61p1")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_aqt1c")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.07288e-06, 0.500003)
+scale = Vector2(0.265625, 0.257813)
+sprite_frames = SubResource("SpriteFrames_v18qt")
+animation = &"Run"
+autoplay = "Run"
+frame_progress = 0.927554
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
