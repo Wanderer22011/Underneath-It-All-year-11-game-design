@@ -15,7 +15,7 @@ func _process(delta):
 	move(delta)
 	handle_animation()
 
-func move(delta):
+func move(_delta):
 	if is_enemy_chase:
 		player = Global.playerBody
 		velocity = position.direction_to(player.position) * speed

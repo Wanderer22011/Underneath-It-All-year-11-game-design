@@ -2,7 +2,7 @@ extends Sprite2D
 
 var can_fire = true
 
-@onready var bullet = preload("res://Characters/bullet.tscn")
+@onready var Magic_orb = preload("res://Characters/bullet.tscn")
 
 var rotation_speed = 100.0
 		
@@ -19,7 +19,7 @@ func _process(delta):
 	
 	if Input.is_action_pressed("Shoot"):
 		if can_fire:
-			var bullet_instance = bullet.instantiate()
+			var bullet_instance = Magic_orb.instantiate()
 			bullet_instance.rotation = rotation
 			bullet_instance.global_position = $Marker2D.global_position
 			get_parent().add_child(bullet_instance)
