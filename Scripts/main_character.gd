@@ -13,6 +13,8 @@ var starting_position= Vector2(-147, 274)
 var health = 100
 var health_max = 100
 var health_min = 0
+@onready var anim : AnimatedSprite2D = $AnimatedSprite2D
+
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -26,16 +28,26 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		jump_Available=false
+		
 	
 	else:
 		jump_Available=true
 		if jump_Buffer:
 			Jump()
 			jump_Buffer=false
+		if abs(velocity.x) > 10:
+			anim.play("Walking")
+		else:
+			anim.play("Idle")
 
+	if velocity.x <0:
+		anim.flip_h = true
+	else:
+		anim.flip_h = false
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump"):
 		if jump_Available:
+			anim.play("Jump")
 			if jump_time < jump_duration:
 				Jump()
 				jump_time += delta
