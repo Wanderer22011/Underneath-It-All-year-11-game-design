@@ -5,4 +5,3 @@
 [node name="Pangolin" type="Node2D"]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_e5f51")
-metadata/_edit_group_ = true

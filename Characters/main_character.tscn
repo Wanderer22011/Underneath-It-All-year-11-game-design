@@ -1,10 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://c351amaf2wxv5"]
+[gd_scene load_steps=23 format=3 uid="uid://c351amaf2wxv5"]
 
 [ext_resource type="Script" path="res://Scripts/main_character.gd" id="1_u1mcy"]
 [ext_resource type="Texture2D" uid="uid://ktxigdrjgrt6" path="res://Pictures/Main_Character_everything.png" id="2_8dnuq"]
 [ext_resource type="Script" path="res://Scripts/Gun.gd" id="3_1yhi4"]
 [ext_resource type="Texture2D" uid="uid://be7ceeeqpi8a7" path="res://Pictures/Wand.png" id="3_eda0h"]
-[ext_resource type="PackedScene" uid="uid://b7613mffkj20" path="res://Characters/healthbar.tscn" id="5_u30rn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gy0rc"]
 size = Vector2(38, 66)
@@ -118,6 +117,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve" id="Curve_ps0i4"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3ykci"]
+curve = SubResource("Curve_ps0i4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_thqom"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape_scale = Vector3(10010, 100, 10)
+angle_min = 7.00001
+angle_max = 7.00001
+angle_curve = SubResource("CurveTexture_3ykci")
+velocity_pivot = Vector3(1, 2, 1)
+spread = 53.71
+flatness = 0.472
+initial_velocity_min = 1.0
+initial_velocity_max = 60.61
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = 2.0
+damping_max = 8.333
+
 [node name="Main Character" type="CharacterBody2D"]
 script = ExtResource("1_u1mcy")
 
@@ -131,9 +157,9 @@ shape = SubResource("RectangleShape2D_gy0rc")
 position = Vector2(-1, 1)
 scale = Vector2(0.515625, 0.523438)
 sprite_frames = SubResource("SpriteFrames_iuqqx")
-animation = &"Idle"
+animation = &"Walking"
 autoplay = "Idle"
-frame_progress = 0.107153
+frame_progress = 0.3355
 
 [node name="Gun" type="Sprite2D" parent="."]
 position = Vector2(-2, 0)
@@ -148,10 +174,11 @@ autostart = true
 position = Vector2(41.4304, 1.01725e-07)
 scale = Vector2(1.34785, 2.58096)
 
-[node name="Healthbar" parent="." instance=ExtResource("5_u30rn")]
-offset_left = -12.0
-offset_top = -24.0
-offset_right = 12.0
-offset_bottom = -20.0
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-4, 12)
+rotation = -3.14159
+scale = Vector2(2, 2)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_thqom")
 
 [connection signal="timeout" from="Gun/BulletCooldownTimer" to="Gun" method="_on_bullet_cooldown_timer_timeout"]

@@ -34,9 +34,13 @@ func _physics_process(delta):
 		jump_Available=true
 		if jump_Buffer:
 			Jump()
+			anim.play("Jump")
+			AudioStreamManager.play("res://Audios/JumpSound.mp3")
 			jump_Buffer=false
+			
 		if abs(velocity.x) > 10:
 			anim.play("Walking")
+			
 		else:
 			anim.play("Idle")
 
@@ -47,10 +51,12 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump"):
 		if jump_Available:
-			anim.play("Jump")
+			
 			if jump_time < jump_duration:
 				Jump()
 				jump_time += delta
+				AudioStreamManager.play("res://Audios/JumpSound.mp3")
+				anim.play("Jump")
 			else:
 				jump_time=0
 			
@@ -64,8 +70,12 @@ func _physics_process(delta):
 	var direction = Input.get_axis("Left", "Right")
 	if direction:
 		velocity.x = direction * SPEED
+		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		AudioStreamManager.play("res://Audios/Walking sound.mp3")
+		
+		
 
 
 	move_and_slide()

@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx6cuw01cmlkk"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_dwqdi"]
+[ext_resource type="Texture2D" uid="uid://cdlryuq0ssam" path="res://Pictures/backgroundFinalFinal.png" id="2_wj5gl"]
+[ext_resource type="FontFile" uid="uid://mvwdh3e46vqp" path="res://Minecrafter.Reg.ttf" id="3_a3xk5"]
+[ext_resource type="AudioStream" uid="uid://dm7yrct4aay8i" path="res://Audios/Title music.mp3" id="4_xahkk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4l8kp"]
+line_spacing = 4.0
+font = ExtResource("3_a3xk5")
+font_size = 75
+outline_size = 2
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 6.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dwqdi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.997
+anchor_bottom = 0.994
+offset_left = 2.0
+offset_top = 3.0
+offset_right = -0.532104
+offset_bottom = -0.052002
+texture = ExtResource("2_wj5gl")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 492.65
+offset_top = 171.968
+offset_right = -444.38
+offset_bottom = -418.158
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Seperater" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "UNDERNEATH IT ALL"
+label_settings = SubResource("LabelSettings_4l8kp")
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xahkk")
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

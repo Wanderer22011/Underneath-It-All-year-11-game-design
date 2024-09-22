@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qmymmm1piv6x"
+path="res://.godot/imported/Walking sound.mp3-db01d6e473a5cc7ab9761dd81d9a7141.mp3str"
+
+[deps]
+
+source_file="res://Audios/Walking sound.mp3"
+dest_files=["res://.godot/imported/Walking sound.mp3-db01d6e473a5cc7ab9761dd81d9a7141.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

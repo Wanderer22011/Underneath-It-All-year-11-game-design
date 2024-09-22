@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfyxv2kng8gyy"]
+[gd_scene load_steps=7 format=3 uid="uid://bfyxv2kng8gyy"]
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_04f22"]
 [ext_resource type="Texture2D" uid="uid://dgxfbtq12ab8w" path="res://Pictures/Bullets.png" id="2_b2bdl"]
@@ -26,6 +26,28 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jpxw1"]
 shader = SubResource("Shader_l1q87")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8b5bd"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+spread = 74.032
+initial_velocity_min = 909.09
+initial_velocity_max = 909.09
+angular_velocity_min = 720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = -2.0
+orbit_velocity_max = -0.0299999
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+radial_accel_min = 63.64
+radial_accel_max = 77.28
+scale_min = 2.0
+scale_max = 3.0
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 1000.0
+color = Color(0.544395, 0.987264, 0.906153, 1)
+
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.0996094, 0.0195312)
 script = ExtResource("1_04f22")
@@ -42,6 +64,11 @@ scale = Vector2(6.02353, 25.6001)
 position = Vector2(4.30836e-05, 0)
 scale = Vector2(1.88235, 8.80002)
 texture = ExtResource("2_b2bdl")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-50.1961, 0)
+rotation = -3.14159
+process_material = SubResource("ParticleProcessMaterial_8b5bd")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
