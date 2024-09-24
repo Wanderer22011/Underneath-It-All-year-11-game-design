@@ -3,10 +3,10 @@
 [node name="Level 2" type="Node2D"]
 
 [node name="TextEdit" type="TextEdit" parent="."]
-offset_left = 82.0
-offset_top = 219.0
-offset_right = 582.0
-offset_bottom = 329.0
+offset_left = 90.0
+offset_top = 143.0
+offset_right = 590.0
+offset_bottom = 253.0
 scale = Vector2(2, 2)
 text = "You Win! For Now.... New Levels Comming Soon!"
 editable = false

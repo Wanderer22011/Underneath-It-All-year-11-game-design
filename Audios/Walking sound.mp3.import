@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Walking sound.mp3-db01d6e473a5cc7ab9761dd81d9
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0.0
 bpm=0.0
 beat_count=0

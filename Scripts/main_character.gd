@@ -10,9 +10,8 @@ var jump_Available: bool = true
 var jump_time = 0
 var jump_duration=0.3
 var starting_position= Vector2(-147, 274)
-var health = 100
-var health_max = 100
-var health_min = 0
+
+@onready var walking_sound: AudioStreamPlayer = $WalkingSound
 @onready var anim : AnimatedSprite2D = $AnimatedSprite2D
 
 
@@ -63,7 +62,17 @@ func _physics_process(delta):
 		else:
 			jump_Buffer=true
 			get_tree().create_timer(jump_Buffer_time).timeout.connect(on_jump_buffer_timeout)
-
+	if Input.is_action_just_pressed("Left"):
+		walking_sound.play()
+	elif Input.is_action_just_pressed("Right"):
+		walking_sound.play()
+	
+	elif Input.is_action_just_released("Left"):
+		walking_sound.stop()
+	
+	elif  Input.is_action_just_released("Right"):
+		walking_sound.stop()
+		
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -73,7 +82,7 @@ func _physics_process(delta):
 		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		AudioStreamManager.play("res://Audios/Walking sound.mp3")
+		
 		
 		
 

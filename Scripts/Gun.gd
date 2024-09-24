@@ -19,6 +19,7 @@ func _process(delta):
 	
 	if Input.is_action_pressed("Shoot"):
 		if can_fire:
+			AudioStreamManager.play("res://Audios/Weapon_Shooting_Sound.mp3")
 			var bullet_instance = Magic_orb.instantiate()
 			bullet_instance.rotation = rotation
 			bullet_instance.global_position = $Marker2D.global_position

@@ -68,6 +68,7 @@ texture = ExtResource("2_b2bdl")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(-50.1961, 0)
 rotation = -3.14159
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_8b5bd")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -7,7 +7,7 @@ var player = CharacterBody2D
 var health = 50
 var health_max = 50
 var health_min = 0
-
+@onready var explosion_prefab = preload("res://Characters/explosion.tscn")
 func _ready():
 	is_enemy_chase = true
 	
@@ -53,5 +53,11 @@ func _on_area_2d_body_entered(body:Node2D)-> void:
 
 
 func _on_area_2d_area_entered(area):
+	
 	if area is bullet:
 		queue_free()
+		var explosion=explosion_prefab.instantiate()
+		explosion.global_position = global_position
+		explosion.get_child(0).emitting = true
+		get_parent().add_child(explosion)
+	
