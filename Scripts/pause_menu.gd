@@ -1,5 +1,7 @@
 extends Control
 
+var is_paused: bool = false
+
 func _ready():
 	$AnimationPlayer.play("RESET")
 
@@ -11,11 +13,7 @@ func pause():
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
 
-func testESC():
-	if Input.is_action_just_pressed("esc") and get_tree().paused == false:
-		pause()
-	elif Input.is_action_just_pressed("esc") and get_tree().paused == true:
-		resume()
+
 
 func _on_continue_pressed() -> void:
 	resume()
@@ -32,4 +30,7 @@ func _on_main_page_pressed() -> void:
 	
 	
 func _process(delta):
-	testESC()
+	if Input.is_action_just_pressed("esc") and get_tree().paused == false:
+		pause()
+	elif Input.is_action_just_pressed("esc") and get_tree().paused == true:
+		resume()

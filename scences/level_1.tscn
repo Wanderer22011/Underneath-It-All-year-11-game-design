@@ -192,6 +192,12 @@ autoplay = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pause_menu" parent="CanvasLayer" instance=ExtResource("11_ga0bn")]
+offset_left = -4.0
+offset_top = -1.0
+offset_right = -4.0
+offset_bottom = -1.0
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
+[connection signal="area_entered" from="Pangolin/Path2D/PathFollow2D/Pangolin Area2D" to="Pangolin" method="_on_pangolin_area_2d_area_entered"]
+[connection signal="area_entered" from="Pangolin2/Path2D/PathFollow2D/Pangolin Area2D" to="Pangolin" method="_on_pangolin_area_2d_area_entered"]
 [connection signal="timeout" from="Spawn_timer" to="." method="_on_spawn_timer_timeout"]

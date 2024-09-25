@@ -1,5 +1,6 @@
 extends Area2D
 class_name bullet
+@onready var explosion_prefab = preload("res://Characters/explosion.tscn")
  
 var speed = 1000
 
@@ -24,16 +25,21 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 
 
-func _on_area_entered(area):
-	if area:
-		queue_free()
-
-
-
-
-	
-
+#func _on_area_entered(area):
+	#if area:
+		#var explosion=explosion_prefab.instantiate()
+		#explosion.global_position = global_position
+		#explosion.get_child(0).emitting = true
+		#get_parent().add_child(explosion)
+		#queue_free()
+		#AudioStreamManager.play("res://Audios/Boom_Sound.mp3")
 
 func _on_body_entered(body):
 	if body:
+		var explosion=explosion_prefab.instantiate()
+		explosion.global_position = self.global_position
+		explosion.get_child(0).emitting = true
+		get_parent().get_parent().add_child(explosion)
 		queue_free()
+		AudioStreamManager.play("res://Audios/Boom_Sound.mp3")
+		

@@ -152,8 +152,8 @@ autoplay = "Idle"
 frame_progress = 0.3355
 
 [node name="Gun" type="Sprite2D" parent="."]
-position = Vector2(0, 2)
-scale = Vector2(0.448632, 0.451172)
+position = Vector2(-1, 1)
+scale = Vector2(0.482129, 0.475586)
 texture = ExtResource("3_pyp5b")
 script = ExtResource("3_1yhi4")
 
