@@ -28,10 +28,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.997
 anchor_bottom = 0.994
-offset_left = 2.0
-offset_top = 3.0
-offset_right = -0.532104
-offset_bottom = -0.052002
+offset_left = 1.0
+offset_top = 4.0
+offset_right = -1.5321
+offset_bottom = 0.947998
 texture = ExtResource("2_wj5gl")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

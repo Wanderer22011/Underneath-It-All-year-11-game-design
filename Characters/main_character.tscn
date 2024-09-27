@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://qmymmm1piv6x" path="res://Audios/Walking sound.mp3" id="5_pe3i0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gy0rc"]
-size = Vector2(38, 66)
+size = Vector2(34, 62)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1vf4"]
 atlas = ExtResource("2_8dnuq")
@@ -139,7 +139,7 @@ script = ExtResource("1_u1mcy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3
-position = Vector2(-1.5, 0.5)
+position = Vector2(-0.5, 1.5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_gy0rc")
 
@@ -161,7 +161,7 @@ script = ExtResource("3_1yhi4")
 autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="Gun"]
-position = Vector2(41.4304, 1.01725e-07)
+position = Vector2(47.7051, 1.01725e-07)
 scale = Vector2(1.34785, 2.58096)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

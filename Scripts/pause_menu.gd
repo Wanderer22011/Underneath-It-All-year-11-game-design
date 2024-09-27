@@ -17,16 +17,19 @@ func pause():
 
 func _on_continue_pressed() -> void:
 	resume()
+	AudioStreamManager.play("res://Audios/Click.mp3")
 
 
 func _on_restart_pressed() -> void:
 	resume()
 	get_tree().reload_current_scene()
+	AudioStreamManager.play("res://Audios/Click.mp3")
 
 
 func _on_main_page_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scences/menu.tscn")
+	AudioStreamManager.play("res://Audios/Click.mp3")
 	
 	
 func _process(delta):
